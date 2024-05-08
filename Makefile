@@ -6,7 +6,7 @@
 #    By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/25 06:35:38 by sbartoul          #+#    #+#              #
-#    Updated: 2024/04/29 14:53:00 by sbartoul         ###   ########.fr        #
+#    Updated: 2024/05/06 08:16:24 by sbartoul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ CFILES = 	push_swap.c     	\
 			sort.c				\
 			stacksortcheck.c	\
 			split.c				\
+			divideconquer.c		\
 
 OBJECTS = ${CFILES:.c=.o}
 

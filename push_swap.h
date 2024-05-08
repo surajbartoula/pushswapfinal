@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 17:09:41 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/04/29 14:52:34 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/05/07 08:55:31 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,12 @@ void	ft_rr(t_stack **a, t_stack **b, int j);
 void	ft_rra(t_stack **a, int j);
 void	ft_rrb(t_stack **b, int j);
 int		ft_lstsize(t_stack *lst);
-void	ft_sort(t_stack **a);
+void	ft_sort(t_stack **a, t_stack **b);
 void	ft_tiny_sort(t_stack **a);
-void	ft_bigsort(t_stack **a, t_stack **b);
+void	ft_rotate(t_stack **a, t_stack **b);
 char	**ft_split(char const *s, char c);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
+void	ft_divideconquer(t_stack **a, t_stack **b, int len);
 
 #endif

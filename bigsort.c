@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 05:58:03 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/05/05 21:19:28 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/05/08 10:49:46 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,50 +14,72 @@
 
 void	anticlockwise(t_stack **a, t_stack **b, int index)
 {
-	ft_ra(a, index - 1);
+	ft_rb(b, index - 1);
 	ft_pb(a, b, 1);
+	ft_rrb(b, index - 1);
 }
 
 void	clockwise(t_stack **a, t_stack **b, int index, int size)
 {
-	ft_rra(a, (size - index) + 1);
+	ft_rrb(b, (size - index) + 1);
 	ft_pb(a, b, 1);
+	ft_rb(b, (size - index) + 1);
 }
 
-void	ft_rotate_push(t_stack **a, t_stack **b, int len)
+int	indexvalue(t_stack *lst, int num)
 {
-	int		i;
-	int		index;
-	int		size;
-	t_stack	*current;
+	if (lst == NULL || lst->next == NULL)
+		return (0);
+	if (num >= lst->num && num <= lst->next->num)
+		return (1);
+	return (0);
+}
 
-	i = 1;
-	while (i < len - 2)
+void	ft_rotate(t_stack **a, t_stack **b)
+{
+	t_stack	*cur;
+	t_stack	*lst;
+	int		index;
+
+	if ((*a) == NULL)
 	{
+		ft_printf("The value is null.\n");
+		return ;
+	}
+	else if ((*b) == NULL)
+	{
+		ft_pb(a, b, 1);
+		return ;
+	}
+	cur = *b;
+	while (cur->next != NULL)
+		cur = cur->next;
+	ft_printf("b.num is %d\n", cur->num);
+	ft_printf("b.num first is %d\n", (*b)->num);
+	ft_printf("a.num is %d\n", (*a)->num);
+	if ((*a)->num > (*b)->num)
+		ft_pb(a, b, 1);
+	else if ((*a)->num < cur->num)
+	{
+		ft_pb(a, b, 1);
+		ft_rb(b, 1);
+	}
+	else
+	{
+		cur = *b;
+		lst = *a;
 		index = 1;
-		current = *a;
-		size = ft_lstsize(current);
-		while (current && current->p_index != i)
+		ft_printf("The a.num is %d\n", lst->num);
+		ft_printf("The value of cur.num is %d\n", cur->num);
+		while (cur != NULL && (indexvalue(cur, lst->num)) != 1)
 		{
-			current = current->next;
 			index++;
+			cur = cur->next;
 		}
-		if (index <= (size - index))
+		ft_printf("The index value is: %d\n", index);
+		if (index <= (ft_lstsize(*b) - index))
 			anticlockwise(a, b, index);
 		else
-			clockwise(a, b, index, size);
-		i++;
+			clockwise(a, b, index, ft_lstsize(*b));
 	}
-}
-
-void	ft_bigsort(t_stack **a, t_stack **b)
-{
-	int	len;
-
-	len = ft_lstsize(*a);
-	ft_divideconquer(a, b, len);
-	ft_rotate_push(a, b, len);
-	if (ft_lstsize(*a) == 3)
-		ft_tiny_sort(a);
-	ft_pa(a, b, len - 3);
 }

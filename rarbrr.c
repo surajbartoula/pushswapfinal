@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 07:56:00 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/04/27 15:01:54 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/05/08 08:12:00 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_ra(t_stack **a, int j)
 
 	while (j > 0)
 	{
-		if (!*a || !(*a)->next)
+		if (*a == NULL || (*a)->next == NULL)
 			return ;
 		tmp = *a;
 		*a = ft_lstlast(*a);
@@ -36,7 +36,7 @@ void	ft_rb(t_stack **b, int j)
 
 	while (j > 0)
 	{
-		if (!*b || !(*b)->next)
+		if (*b == NULL || (*b)->next == NULL)
 			return ;
 		tmp = *b;
 		*b = ft_lstlast(*b);
@@ -54,7 +54,8 @@ void	ft_rr(t_stack **a, t_stack **b, int j)
 
 	while (j > 0)
 	{
-		if (!*a || !((*a)->next) || !*b || !((*b)->next))
+		if (*a == NULL || ((*a)->next) == NULL || *b == NULL
+			|| ((*b)->next) == NULL)
 			return ;
 		tmp = *a;
 		*a = ft_lstlast(*a);
@@ -78,7 +79,7 @@ void	ft_rra(t_stack **a, int j)
 
 	while (j > 0)
 	{
-		if (!*a || !(*a)->next)
+		if (*a == NULL || (*a)->next == NULL)
 			return ;
 		i = 0;
 		tmp = *a;
@@ -106,7 +107,7 @@ void	ft_rrb(t_stack **b, int j)
 
 	while (j > 0)
 	{
-		if (!*b || !(*b)->next)
+		if (*b == NULL || (*b)->next == NULL)
 			return ;
 		i = 0;
 		tmp = *b;

@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 07:27:55 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/04/25 05:37:38 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/05/07 20:47:58 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_sa(t_stack **a, int j)
 
 	while (j > 0)
 	{
-		if (!(*a) || !(*a)->next)
+		if ((*a) == NULL || (*a)->next == NULL)
 			return ;
 		tmp = *a;
 		*a = (*a)->next;
@@ -35,7 +35,7 @@ void	ft_sb(t_stack **b, int j)
 
 	while (j > 0)
 	{
-		if (!(*b) || (*b)->next)
+		if (*b == NULL || (*b)->next == NULL)
 			return ;
 		tmp = *b;
 		*b = (*b)->next;
@@ -52,7 +52,8 @@ void	ft_ss(t_stack **a, t_stack **b, int j)
 
 	while (j > 0)
 	{
-		if (!(*a) || !((*a)->next) || !(*b) || ((*b)->next))
+		if (*a == NULL || (*a)->next == NULL || (*b) == NULL
+			|| (*b)->next == NULL)
 			return ;
 		tmp = *a;
 		*a = (*a)->next;

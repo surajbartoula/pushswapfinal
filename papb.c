@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 07:54:27 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/04/25 22:40:29 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/05/08 08:13:03 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_pa(t_stack **a, t_stack **b, int j)
 
 	while (j > 0)
 	{
-		if (!*b)
+		if (*b == NULL)
 			return ;
 		tmp = *a;
 		*a = *b;
@@ -35,7 +35,7 @@ void	ft_pb(t_stack **a, t_stack **b, int j)
 
 	while (j > 0)
 	{
-		if (!(*a))
+		if ((*a) == NULL)
 			return ;
 		tmp = *b;
 		*b = *a;
