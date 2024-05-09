@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 22:46:33 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/05/09 04:16:09 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/05/09 19:14:47 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	ft_sort(t_stack **a, t_stack **b)
 	}
 	else if (ft_lstsize(*b) == 2)
 	{
-		ft_printf("Reached on tiny sort for b");
+		ft_printf("Reached on tiny sort for b\n");
 		ft_pb(a, b, 1);
 		ft_tiny_sort_b(b);
 	}
