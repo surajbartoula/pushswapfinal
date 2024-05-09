@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 15:11:44 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/05/08 10:15:41 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/05/09 04:52:14 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,10 @@ int	main(int argc, char *argv[])
 		while (ft_lstsize(a) > 3)
 		{
 			ft_divideconquer(&a, &b, ft_lstsize(a));
-			fill_postion_index(&b);
-			fill_postion_index(&a);
+			if (ft_lstsize(b) > 0)
+				fill_postion_index(&b);
+			if (ft_lstsize(a) > 0)
+				fill_postion_index(&a);
 		}
 		ft_printf("AFTER WHILE LOOP\n");
 		size = ft_lstsize(a);

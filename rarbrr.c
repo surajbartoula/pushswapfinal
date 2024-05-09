@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 07:56:00 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/05/08 08:12:00 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/05/09 05:45:12 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,8 @@ void	ft_ra(t_stack **a, int j)
 		if (*a == NULL || (*a)->next == NULL)
 			return ;
 		tmp = *a;
-		*a = ft_lstlast(*a);
-		(*a)->next = tmp;
-		*a = tmp->next;
+		*a = (*a)->next;
+		ft_lstlast(tmp)->next = tmp;
 		tmp->next = NULL;
 		ft_printf("ra\n");
 		j--;
@@ -39,9 +38,8 @@ void	ft_rb(t_stack **b, int j)
 		if (*b == NULL || (*b)->next == NULL)
 			return ;
 		tmp = *b;
-		*b = ft_lstlast(*b);
-		(*b)->next = tmp;
-		*b = tmp->next;
+		*b = (*b)->next;
+		ft_lstlast(tmp)->next = tmp;
 		tmp->next = NULL;
 		ft_printf("rb\n");
 		j--;

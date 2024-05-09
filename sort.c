@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 22:46:33 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/05/08 21:24:47 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/05/09 04:16:09 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,7 @@ void	ft_tiny_sort_b(t_stack **b)
 	m = (*b)->next;
 	l = (*b)->next->next;
 	if (m->num > f->num && m->num > l->num && f->num < l->num)
-	{
-		ft_rrb(b, 1);
-		ft_sb(b, 1);
-	}
+		ft_rb(b, 1);
 	else if (m->num < f->num && m->num < l->num && f->num < l->num)
 		ft_rrb(b, 1);
 	else if (m->num > f->num && m->num > l->num && f->num > l->num)
@@ -62,7 +59,7 @@ void	ft_tiny_sort_b(t_stack **b)
 		ft_sb(b, 1);
 		ft_rb(b, 1);
 	}
-	else if (m->num < f->num && m->num > l->num)
+	else if (m->num > f->num && m->num < l->num)
 	{
 		ft_rb(b, 1);
 		ft_sb(b, 1);
@@ -78,6 +75,7 @@ void	ft_sort(t_stack **a, t_stack **b)
 	}
 	else if (ft_lstsize(*b) == 2)
 	{
+		ft_printf("Reached on tiny sort for b");
 		ft_pb(a, b, 1);
 		ft_tiny_sort_b(b);
 	}

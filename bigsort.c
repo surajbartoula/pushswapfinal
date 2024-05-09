@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 05:58:03 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/05/08 10:49:46 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/05/09 04:42:49 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	clockwise(t_stack **a, t_stack **b, int index, int size)
 {
 	ft_rrb(b, (size - index) + 1);
 	ft_pb(a, b, 1);
-	ft_rb(b, (size - index) + 1);
+	ft_rb(b, (size + 1 - index) + 1);
 }
 
 int	indexvalue(t_stack *lst, int num)
@@ -54,7 +54,7 @@ void	ft_rotate(t_stack **a, t_stack **b)
 	cur = *b;
 	while (cur->next != NULL)
 		cur = cur->next;
-	ft_printf("b.num is %d\n", cur->num);
+	ft_printf("cur.num is %d\n", cur->num);
 	ft_printf("b.num first is %d\n", (*b)->num);
 	ft_printf("a.num is %d\n", (*a)->num);
 	if ((*a)->num > (*b)->num)
@@ -68,7 +68,7 @@ void	ft_rotate(t_stack **a, t_stack **b)
 	{
 		cur = *b;
 		lst = *a;
-		index = 1;
+		index = 0;
 		ft_printf("The a.num is %d\n", lst->num);
 		ft_printf("The value of cur.num is %d\n", cur->num);
 		while (cur != NULL && (indexvalue(cur, lst->num)) != 1)
