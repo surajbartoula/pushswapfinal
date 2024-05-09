@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 07:54:27 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/05/08 08:13:03 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/05/08 19:48:19 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ void	ft_pa(t_stack **a, t_stack **b, int j)
 {
 	t_stack	*tmp;
 
-	while (j > 0)
+	if (*b == NULL)
+		return ;
+	while (j > 0 && *b != NULL)
 	{
-		if (*b == NULL)
-			return ;
-		tmp = *a;
-		*a = *b;
+		tmp = *b;
 		*b = (*b)->next;
-		(*a)->next = tmp;
+		tmp->next = *a;
+		*a = tmp;
 		ft_printf("pa\n");
 		j--;
 	}
@@ -33,14 +33,14 @@ void	ft_pb(t_stack **a, t_stack **b, int j)
 {
 	t_stack	*tmp;
 
-	while (j > 0)
+	if ((*a) == NULL)
+		return ;
+	while (j > 0 && *a != NULL)
 	{
-		if ((*a) == NULL)
-			return ;
-		tmp = *b;
-		*b = *a;
-		*a = (*b)->next;
-		(*b)->next = tmp;
+		tmp = *a;
+		*a = (*a)->next;
+		tmp->next = *b;
+		*b = tmp;
 		ft_printf("pb\n");
 		j--;
 	}
