@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 22:46:33 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/05/10 05:22:03 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/05/10 17:37:21 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,8 @@ void	ft_sort(t_stack **a, t_stack **b)
 		ft_pb(a, b, 1);
 		ft_sb(b, 1);
 	}
+	else if (ft_lstsize(*b) == 1 && (*b)->num < (*a)->num)
+		ft_pb(a, b, 1);
 	else if (ft_lstsize(*b) == 2)
 	{
 		ft_pb(a, b, 1);

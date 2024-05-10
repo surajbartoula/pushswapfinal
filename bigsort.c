@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 05:58:03 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/05/10 06:48:31 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/05/10 17:53:22 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	clockwise(t_stack **a, t_stack **b, int index, int size)
 	printf("index: %d\n", index);
 	ft_rrb(b, size - index);
 	ft_pb(a, b, 1);
-	ft_rb(b, index);
+	ft_rb(b, (size - index) + 1);
 }
 
 int	indexvalue(t_stack *lst, int num)
