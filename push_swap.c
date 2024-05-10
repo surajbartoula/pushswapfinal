@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 15:11:44 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/05/10 05:19:45 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/05/10 06:54:09 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ int	main(int argc, char *argv[])
 		else if (size == 3)
 			ft_tiny_sort(&a);
 		ft_pa(&a, &b, ft_lstsize(b));
+		print_stack(a, "a");
+		print_stack(b, "b");
 	}
 	ft_free_stack(&a);
 	ft_free_stack(&b);
