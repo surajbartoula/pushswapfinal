@@ -6,31 +6,32 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 05:58:03 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/05/09 19:53:49 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/05/10 05:03:12 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
-void	anticlockwise(t_stack **a, t_stack **b, int index)
+void	anticlockwise(t_stack **a, t_stack **b, int index, int size)
 {
-	ft_rb(b, index - 1);
+	ft_rb(b, (size - index + 1));
 	ft_pb(a, b, 1);
-	ft_rrb(b, index - 1);
+	ft_rrb(b, index);
 }
 
-void	clockwise(t_stack **a, t_stack **b, int index, int size)
+void	clockwise(t_stack **a, t_stack **b, int index)
 {
-	ft_rrb(b, (size - index) + 2);
+	ft_rrb(b, index);
 	ft_pb(a, b, 1);
-	ft_rb(b, (size + 2 - index) + 1);
+	ft_rb(b, index + 1);
 }
 
 int	indexvalue(t_stack *lst, int num)
 {
 	if (lst == NULL || lst->next == NULL)
 		return (0);
-	if (num >= lst->num && num <= lst->next->num)
+	if (num <= lst->num && num >= lst->next->num)
 		return (1);
 	return (0);
 }
@@ -69,18 +70,19 @@ void	ft_rotate(t_stack **a, t_stack **b)
 	{
 		cur = *b;
 		lst = *a;
-		index = 1;
+		index = 0;
 		ft_printf("The a.num is %d\n", lst->num);
 		ft_printf("The value of cur.num is %d\n", cur->num);
-		while (cur != NULL && (indexvalue(cur, lst->num)) != 1)
+		while (cur != NULL && !(indexvalue(cur, lst->num)))
 		{
-			index++;
 			cur = cur->next;
+			index++;
 		}
+		ft_printf("The size of b is:%d\n", ft_lstsize(*b));
 		ft_printf("The index value is: %d\n", index);
-		if (index <= (ft_lstsize(*b) - index))
-			anticlockwise(a, b, index);
+		if (index > ft_lstsize(*b) / 2)
+			anticlockwise(a, b, index, ft_lstsize(*b));
 		else
-			clockwise(a, b, index, ft_lstsize(*b));
+			clockwise(a, b, index);
 	}
 }
