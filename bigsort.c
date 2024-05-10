@@ -6,25 +6,27 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 05:58:03 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/05/10 05:03:12 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/05/10 06:48:31 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
-void	anticlockwise(t_stack **a, t_stack **b, int index, int size)
+void	anticlockwise(t_stack **a, t_stack **b, int index)
 {
-	ft_rb(b, (size - index + 1));
+	printf("index: %d\n", index);
+	ft_rb(b, index);
 	ft_pb(a, b, 1);
 	ft_rrb(b, index);
 }
 
-void	clockwise(t_stack **a, t_stack **b, int index)
+void	clockwise(t_stack **a, t_stack **b, int index, int size)
 {
-	ft_rrb(b, index);
+	printf("index: %d\n", index);
+	ft_rrb(b, size - index);
 	ft_pb(a, b, 1);
-	ft_rb(b, index + 1);
+	ft_rb(b, index);
 }
 
 int	indexvalue(t_stack *lst, int num)
@@ -43,10 +45,7 @@ void	ft_rotate(t_stack **a, t_stack **b)
 	int		index;
 
 	if ((*a) == NULL)
-	{
-		ft_printf("The value is null.\n");
 		return ;
-	}
 	else if ((*b) == NULL)
 	{
 		ft_pb(a, b, 1);
@@ -56,9 +55,6 @@ void	ft_rotate(t_stack **a, t_stack **b)
 	cur = *b;
 	while (cur->next != NULL)
 		cur = cur->next;
-	ft_printf("cur.num is %d\n", cur->num);
-	ft_printf("b.num first is %d\n", (*b)->num);
-	ft_printf("a.num is %d\n", (*a)->num);
 	if ((*a)->num > (*b)->num)
 		ft_pb(a, b, 1);
 	else if ((*a)->num < cur->num)
@@ -71,18 +67,16 @@ void	ft_rotate(t_stack **a, t_stack **b)
 		cur = *b;
 		lst = *a;
 		index = 0;
-		ft_printf("The a.num is %d\n", lst->num);
-		ft_printf("The value of cur.num is %d\n", cur->num);
 		while (cur != NULL && !(indexvalue(cur, lst->num)))
 		{
 			cur = cur->next;
 			index++;
 		}
-		ft_printf("The size of b is:%d\n", ft_lstsize(*b));
-		ft_printf("The index value is: %d\n", index);
-		if (index > ft_lstsize(*b) / 2)
-			anticlockwise(a, b, index, ft_lstsize(*b));
+		index++;
+		printf("size: %d\n", ft_lstsize(*b));
+		if (index <= (ft_lstsize(*b) - index))
+			anticlockwise(a, b, index);
 		else
-			clockwise(a, b, index);
+			clockwise(a, b, index, ft_lstsize(*b));
 	}
 }

@@ -6,11 +6,26 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 22:46:33 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/05/09 19:14:47 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/05/10 05:22:03 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
+
+void print_stack(t_stack *stack, const char *name) {
+    if (stack == NULL) {
+        printf("%s is empty\n", name);
+        return;
+    }
+
+    printf("Contents of stack %s:\n", name);
+    while (stack != NULL) {
+        printf("%d -> ", stack->num);
+        stack = stack->next;
+    }
+    printf("NULL\n");
+}
 
 void	ft_tiny_sort(t_stack **a)
 {
@@ -75,13 +90,13 @@ void	ft_sort(t_stack **a, t_stack **b)
 	}
 	else if (ft_lstsize(*b) == 2)
 	{
-		ft_printf("Reached on tiny sort for b\n");
 		ft_pb(a, b, 1);
 		ft_tiny_sort_b(b);
 	}
 	else
 	{
-		ft_printf("Reached on rotate part\n");
 		ft_rotate(a, b);
 	}
+	print_stack(*a, "a");
+	print_stack(*b, "b");
 }

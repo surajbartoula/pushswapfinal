@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 21:55:40 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/05/08 07:47:22 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/05/10 05:17:46 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	ft_divideconquer(t_stack **a, t_stack **b, int len)
 	if (median == 0)
 		return ;
 	i = 0;
-	ft_printf("The len is: %d\n", len);
 	while (i < len)
 	{
 		if ((*a)->p_index <= median)
